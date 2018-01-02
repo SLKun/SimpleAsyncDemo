@@ -22,7 +22,8 @@ public class HTTPClient implements Callable<String>{
     public String call() throws Exception {
         PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        writer.println("GET /" + player + "/" + card);
+        writer.print("GET /" + player + "/" + card + "\r\n");
+        writer.flush();
 
         String t;
         StringBuilder result = new StringBuilder();
